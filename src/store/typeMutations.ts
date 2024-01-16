@@ -1,0 +1,1 @@
+export const DEFINIR_POKEMONS = 'DEFINIR_POKEMONS'

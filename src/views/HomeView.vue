@@ -1,3 +1,5 @@
 <template>
-    <h5>home</h5>
+    <div class="bg-emerald-sun ">
+        <h1>kk</h1>
+    </div>
 </template>

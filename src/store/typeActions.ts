@@ -1,0 +1,1 @@
+export const OBTER_POKEMONS = "OBTER_POKEMONS"

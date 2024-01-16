@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    backgroundImage: {
+      'emerald-sun': "url('/src/assets/images/df4e8ba28f912bf9cdf9fa0dfc196411.png')",
+    }
   },
   plugins: [],
 }
