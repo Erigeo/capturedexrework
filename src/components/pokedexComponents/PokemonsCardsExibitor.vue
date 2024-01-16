@@ -1,4 +1,21 @@
-<template></template>
+<template>
+<section class="">
+
+
+
+
+
+
+<div v-for="pokemon in filteredPokemon" :key="pokemon.id">
+ 
+</div>
+</section>
+
+
+
+
+
+</template>
 
 
 <script lang="ts">
@@ -89,7 +106,7 @@ export default defineComponent({
         store.dispatch(OBTER_POKEMONS)
 
         return {
-            pokemons: computed(() => store.state.pokemons), store
+            pokemons: computed(() => store.state.pokemons), store, filteredPokemon
         }
     }
 
