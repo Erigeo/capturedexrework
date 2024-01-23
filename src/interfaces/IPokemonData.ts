@@ -1,7 +1,4 @@
 export default interface IPokemonData {
-    _id: {
-        $oid: string;
-    };
     id: number;
     name: string;
     types: string[];
