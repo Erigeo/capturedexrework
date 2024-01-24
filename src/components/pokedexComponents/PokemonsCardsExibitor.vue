@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-col m-2 ">
+    <div class="flex flex-row">
+
+        <div class="flex flex-col m-2 ">
         <div class="flex flex-row justify-start my-1 ">
             <input v-model="showCaptured" id="checkbox_captured" type="checkbox"
                 class="w-4 h-4 text-blue-600 bg-white  border-gray-300 rounded">
@@ -13,14 +15,46 @@
     </div>
 
 
+    <div class="flex flex-col m-2 justify-start ">
+        <div>
+            <div @click="open = !open" class="w-[75px] h-[20px] bg-white text-[11px] rounded-t flex justify-center" :class="{'rounded-b': !open}">
+                <button >
+                {{ selectedGame }}
+            </button>
+
+                <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+      </svg>
+            </div>
+            
+
+            <div v-if="open" class="w-[75px] h-auto  bg-white  absolute p-1 rounded-b ">
+                <ul class="items-center text-left flex-col flex">
+                    <li v-for="game in games" :key="game.id" class="flex flex-row cursor-pointer">
+                        <a  v-if="game.label != selectedGame"  class="text-[11px] text-right block " @click="selectGame(game)"> {{ game.label }} </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+   
+
+
+
     <div class="flex justify-center">
         <section class="grid grid-cols-5 sm:grid-cols-7 gap-1 p-1 md:grid-cols-10 ">
-        <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="sm:m-1 flex">
-            <PokemonCard :pokemon="pokemon" class=""/>
-        </div>
-    </section>
+            <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="sm:m-1 flex">
+                <PokemonCard :pokemon="pokemon" class="" />
+            </div>
+        </section>
     </div>
-    
 </template>
 
 
@@ -39,6 +73,7 @@ export default defineComponent({
         const store = useStore();
         const showCaptured = ref(false);
         const showNonCaptured = ref(true);
+        const open = ref(false);
         const selectedGame = ref('All games');
         const games = ref([
             { id: 1, label: 'All games' },
@@ -106,7 +141,7 @@ export default defineComponent({
 
 
         return {
-            pokemons: computed(() => store.state.pokemons), store, showCaptured, showNonCaptured, filteredPokemon
+            pokemons: computed(() => store.state.pokemons), store, showCaptured, showNonCaptured, filteredPokemon, open, selectedGame, selectGame, games
         };
     },
     components: { PokemonCard }
