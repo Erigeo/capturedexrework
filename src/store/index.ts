@@ -25,8 +25,8 @@ export const store = createStore<estado>({
         [DEFINIR_POKEMONS] (state, pokemon: IPokemonData[]){
             state.pokemons = pokemon
         },
-        [EDITAR_STATUS_POKEMON] (state, pokemon: IPokemonData[]){
-            const index = state.pokemons.findIndex( pokemon => pokemon.id == pokemon.id)
+        [EDITAR_STATUS_POKEMON] (state, pokemon: IPokemonData){
+            const index = state.pokemons.findIndex( poke => poke.id == pokemon.id)
             
             if (index !== -1) {
                 // Verifica se o Pokémon foi encontrado no array antes de tentar acessá-lo

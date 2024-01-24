@@ -11,8 +11,8 @@
             <label for="checkbox_non_captured" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show NonCaptured</label>
         </div>
 
-    <section class="flex flex-wrap p-10">
-        <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="flex flex-wrap bg-pink-100 m-3">
+    <section class="grid grid-cols-5 p-1 ">
+        <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="m-1">
             <PokemonCard :pokemon="pokemon"/>
         </div>
     </section>
