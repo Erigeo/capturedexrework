@@ -13,11 +13,14 @@
     </div>
 
 
-    <section class="grid grid-cols-5 p-1 ">
-        <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="m-1">
-            <PokemonCard :pokemon="pokemon" />
+    <div class="flex justify-center">
+        <section class="grid grid-cols-5 sm:grid-cols-7 gap-1 p-1 md:grid-cols-10 ">
+        <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="sm:m-1 flex">
+            <PokemonCard :pokemon="pokemon" class=""/>
         </div>
     </section>
+    </div>
+    
 </template>
 
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-green-100 w-[150] h-[200] rounded-md p-1">
+    <div class="bg-green-100 w-[70px] h-[115px]  md:w-[100px] md:h-[120px] lg:w-[100px] lg:h-[140px] xl:w-[100px] xl:h-[150px] rounded-md p-1">
         <div class="flex justify-end m-0.9 ">
             <img @click="toggleCaptured" v-if="pokemon.captured" src="@/assets/images/pokeball.png" alt="" class="captured">
             <img v-else @click="toggleCaptured" src="@/assets/images/pokeball_gray.png" alt="" class="captured" />
