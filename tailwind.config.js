@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultColors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     './index.html', './src/**/*.{vue,js,ts,jsx,tsx}'
@@ -6,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'bg-normal': '#A8A77A',
+        defaultColors,
+        'normal': '#A8A77A',
         'fire': '#EE8130',
         'water': '#6390F0',
         'electric' : '#F7D02C',

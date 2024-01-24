@@ -12,21 +12,22 @@
             <p class="text-[10px]"> {{ pokemon.name }}</p>
         </div>
 
-        <div v-if="pokemon.types && pokemon.types.length > 1" class="flex justify-center">
-            
+        <div v-if="pokemon.types && pokemon.types.length > 1" class="flex justify-center gap-0.5">
 
-            <div  class="  w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[0])">
-                <span  class=" text-[7px] " > {{ pokemon.types[0] }}</span>
+
+            <div class="  w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[0])">
+                <span class=" text-[7px] "> {{ pokemon.types[0] }}</span>
             </div>
-            
-            <div  class=" w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[1])" >
-                <span  class="text-[7px]" > {{ pokemon.types[1] }}</span>
+
+            <div class=" w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[1])">
+                <span class="text-[7px]"> {{ pokemon.types[1] }}</span>
             </div>
-           
+
         </div>
 
-        <div v-else  :class="getPokemonType(pokemon.types[0])" class="flex justify-center w-auto h-fit mx-1 rounded-md flex  " >
-            <span  class="text-[7px] " > {{ pokemon.types[0] }} </span>
+        <div v-else :class="getPokemonType(pokemon.types[0])"
+            class="flex justify-center w-auto h-fit mx-1 rounded-md flex  ">
+            <span class="text-[7px] "> {{ pokemon.types[0] }} </span>
         </div>
     </div>
 </template>
@@ -46,16 +47,41 @@ export default defineComponent({
         }
     },
     setup(props) {
+        type ColorMap = {
+            [key: string]: string;
+        };
         const store = useStore();
+        const colorMap: ColorMap = {
+            fire: 'bg-fire',
+            normal: 'bg-normal',
+
+            water: 'bg-water',
+            electric: 'bg-electric',
+            grass: 'bg-grass',
+            ice: 'bg-ice',
+            fighting: 'bg-fighting',
+            poison: 'bg-poison',
+            ground: 'bg-ground',
+            flying: 'bg-flying',
+            psychic: 'bg-psychic',
+            bug: 'bg-bug',
+            rock: 'bg-rock',
+            ghost: 'bg-ghost',
+            dragon: 'bg-dragon',
+            dark: 'bg-dark',
+            steel: 'bg-steel',
+            fairy: 'bg-fairy'
+
+
+        }
 
         const toggleCaptured = () => {
 
             store.dispatch(ATUALIZAR_POKEMON, props.pokemon)
         }
 
-        const getPokemonType = (type: string) : string => {
-        console.log('bg-' + type)
-            return 'bg-' + type
+        const getPokemonType = (type: string): string => {
+            return colorMap[type] || 'bg-gray-100'
         }
 
         return {
