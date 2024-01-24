@@ -1,10 +1,10 @@
 <template>
     <div class="bg-green-100 w-[70px] h-[115px]  md:w-[100px] md:h-[120px] lg:w-[100px] lg:h-[140px] xl:w-[100px] xl:h-[150px] rounded-md p-1">
-        <div class="flex justify-end m-0.9 ">
-            <img @click="toggleCaptured" v-if="pokemon.captured" src="@/assets/images/pokeball.png" alt="" class="captured">
-            <img v-else @click="toggleCaptured" src="@/assets/images/pokeball_gray.png" alt="" class="captured" />
+        <div class="flex  justify-end">
+            <img @click="toggleCaptured" v-if="pokemon.captured" src="@/assets/images/pokeball.png" alt="" class="w-4" >
+            <img v-else @click="toggleCaptured" src="@/assets/images/pokeball_gray.png" alt="" class="w-4" />
         </div>
-        <div class=" mt-2 flex items-center justify-center w-auto h-fit mx-1 rounded-md bg-white ">
+        <div class=" mt-1 flex items-center justify-center w-auto h-fit mx-1 rounded-md bg-white ">
             <img :src="`${pokemon.image}`" alt="">
         </div>
 
@@ -12,21 +12,21 @@
             <p class="text-[10px]"> {{ pokemon.name }}</p>
         </div>
 
-        <div v-if="pokemon.types && pokemon.types.length > 1" class="flex justify-center gap-0.5">
+        <div v-if="pokemon.types && pokemon.types.length > 1" class="flex justify-center gap-0.5 mx-0.5">
 
 
-            <div class="  w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[0])">
+            <div class="  w-auto h-fit px-[4px] rounded-md flex" :class="getPokemonType(pokemon.types[0])">
                 <span class=" text-[7px] "> {{ pokemon.types[0] }}</span>
             </div>
 
-            <div class=" w-auto h-fit px-1 rounded-md flex" :class="getPokemonType(pokemon.types[1])">
+            <div class=" w-auto h-fit px-[4px] rounded-md flex" :class="getPokemonType(pokemon.types[1])">
                 <span class="text-[7px]"> {{ pokemon.types[1] }}</span>
             </div>
 
         </div>
 
         <div v-else :class="getPokemonType(pokemon.types[0])"
-            class="flex justify-center w-auto h-fit mx-1 rounded-md flex  ">
+            class="flex justify-center w-auto h-fit mx-3 rounded-md flex  ">
             <span class="text-[7px] "> {{ pokemon.types[0] }} </span>
         </div>
     </div>
@@ -59,18 +59,18 @@ export default defineComponent({
             electric: 'bg-electric',
             grass: 'bg-grass',
             ice: 'bg-ice',
-            fighting: 'bg-fighting',
-            poison: 'bg-poison',
+            fighting: 'bg-rose-600',
+            poison: 'bg-purple-500',
             ground: 'bg-ground',
             flying: 'bg-flying',
             psychic: 'bg-psychic',
             bug: 'bg-bug',
             rock: 'bg-rock',
-            ghost: 'bg-ghost',
-            dragon: 'bg-dragon',
+            ghost: 'bg-violet-400',
+            dragon: 'bg-indigo-500',
             dark: 'bg-dark',
             steel: 'bg-steel',
-            fairy: 'bg-fairy'
+            fairy: 'bg-rose-200'
 
 
         }
