@@ -1,19 +1,21 @@
 <template>
-
-<div class="flex items-center mb-4">
+    <div class="flex flex-col m-2 ">
+        <div class="flex flex-row justify-start my-1 ">
             <input v-model="showCaptured" id="checkbox_captured" type="checkbox"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox-captured" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show Captured</label>
+                class="w-4 h-4 text-blue-600 bg-white  border-gray-300 rounded">
+            <label for="checkbox-captured" class="ms-2 text-[11px]  flex">Show Captured</label>
         </div>
-        <div class="flex items-center">
+        <div class="flex flex-row ">
             <input checked id="checkbox_non_captured" type="checkbox" v-model="showNonCaptured"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label for="checkbox_non_captured" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Show NonCaptured</label>
+                class="w-4 flex h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
+            <label for="checkbox_non_captured" class="ms-2 text-[11px]">Show NonCaptured</label>
         </div>
+    </div>
+
 
     <section class="grid grid-cols-5 p-1 ">
         <div v-for="pokemon in filteredPokemon" :key="pokemon.id" class="m-1">
-            <PokemonCard :pokemon="pokemon"/>
+            <PokemonCard :pokemon="pokemon" />
         </div>
     </section>
 </template>
@@ -21,7 +23,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, watch } from 'vue';
-import { useStore} from '@/store';
+import { useStore } from '@/store';
 import { OBTER_POKEMONS } from '@/store/typeActions'
 import { ref } from 'vue';
 import PokemonCard from './PokemonCard.vue';
@@ -32,7 +34,7 @@ export default defineComponent({
     name: 'PokemonsCardsExibitor',
     setup() {
         const store = useStore();
-         const showCaptured = ref(false);
+        const showCaptured = ref(false);
         const showNonCaptured = ref(true);
         const selectedGame = ref('All games');
         const games = ref([
@@ -43,7 +45,7 @@ export default defineComponent({
         const capturedKey = ref(0);
         const search = ref('');
         const localStorageKey = ref('pokemonApp');
-       let pokemons = computed(() => store.state.pokemons);
+        let pokemons = computed(() => store.state.pokemons);
 
         store.dispatch(OBTER_POKEMONS);
 
@@ -98,8 +100,8 @@ export default defineComponent({
             loadFiltersState();
         });
 
-      
-        
+
+
         return {
             pokemons: computed(() => store.state.pokemons), store, showCaptured, showNonCaptured, filteredPokemon
         };
